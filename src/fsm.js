@@ -31,6 +31,7 @@ class FSM {
         if (allStates.indexOf(state) != -1) {
             this.previousState = this.currentState;
             this.currentState = state;
+            this.nextState = null;
         } else {
             throw new Error();
         }
@@ -55,8 +56,8 @@ class FSM {
      */
     reset() {
         this.currentState = this.config.initial;
-        this.nextState = null;
-        this.previousState = null;
+        this.nextState = false;
+        this.previousState = false;
     }
 
     /**
@@ -78,6 +79,7 @@ class FSM {
                 }
             }
         }
+        return allStates;
     }
 
     /**
